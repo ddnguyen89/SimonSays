@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="nguyen.simonsays.HighscoreActivity"
+    android:background="#00FFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_marginRight="50dp">
+
+        <ImageView
+            android:id="@+id/yourScoreImage"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:src="@drawable/yourscoretv"
+            style="@style/Image" />
+
+        <TextView
+            android:id="@+id/scoreTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score_tv"
+            android:textSize="50sp"
+            style="@style/TextView"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_marginRight="50dp">
+
+        <ImageView
+            android:id="@+id/highscoreImage"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:src="@drawable/highscoretv"
+            style="@style/Image" />
+
+        <TextView
+            android:id="@+id/highscoreTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/high_score_tv"
+            android:textSize="50sp"
+            style="@style/TextView"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/playAgainButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/playagainbutton"
+        style="@style/Image"
+        android:rotation="-2"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp" />
+
+    <ImageButton
+        android:id="@+id/quitButton"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:src="@drawable/quitbutton"
+        style="@style/Image"
+        android:rotation="-2"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp" />
+
+    <ImageButton
+        android:id="@+id/resetScoreButton"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:src="@drawable/resetscorebutton"
+        style="@style/Image"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="200dp"/>
+
+</LinearLayout>

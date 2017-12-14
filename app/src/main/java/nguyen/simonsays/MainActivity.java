@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
-    //define variables
+    //define widget variables
     private ImageButton playButton, highscoreButton;
 
     @Override
@@ -20,10 +20,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         playButton = (ImageButton) findViewById(R.id.playButton);
         highscoreButton = (ImageButton) findViewById(R.id.highscoreButton);
 
+        //setting onClickListener for buttons
         playButton.setOnClickListener(this);
         highscoreButton.setOnClickListener(this);
     }
 
+    //onClick method to display new intent
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

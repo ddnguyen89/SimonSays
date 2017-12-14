@@ -9,12 +9,12 @@
     <color name="greenFalse">#49B050</color>
     <color name="greenTrue">#49FF50</color>
 
-    <color name="redFalse">#EF4438</color>
-    <color name="redTrue">#AD1A0E</color>
+    <color name="redFalse">#AD1A0E</color>
+    <color name="redTrue">#EF4438</color>
 
-    <color name="blueFalse">#4690CD</color>
-    <color name="blueTrue">#2D70A6</color>
+    <color name="blueFalse">#2D70A6</color>
+    <color name="blueTrue">#4690CD</color>
 
-    <color name="yellowFalse">#F9CF1B</color>
-    <color name="yellowTrue">#CDA505</color>
+    <color name="yellowFalse">#CDA505</color>
+    <color name="yellowTrue">#F9CF1B</color>
 </resources>

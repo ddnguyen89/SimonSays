@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
 
 public class PlayActivity extends AppCompatActivity implements OnClickListener{
 
@@ -27,7 +28,7 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
 
     private final int FLASH_DURATION = 1200;
 
-    Handler handler = new Handler();
+    Timer time = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,12 +120,13 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
         int randomNumber = new Random().nextInt((max - min) + 1) + min;
 
         simonSays.add(randomNumber);
-        Log.d("number", String.valueOf(randomNumber));
+        Log.d("randomNumber", String.valueOf(randomNumber));
     }
 
     public void playGame() {
 
         addRandomNumber();
+
         simonFlash();
 
         Log.d("simon size", String.valueOf(simonSays.size()));
@@ -139,70 +141,63 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
         } else {
             addRandomNumber();
 
-                simonFlash();
+            simonFlash();
 
             Log.d("match", String.valueOf(checkMatch(simonSays, userSays)));
         }
     }
 
     public void simonFlash() {
-        new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
 
-                    for (int i = 0; i < simonSays.size(); i++) {
+        for(int i = 0; i < simonSays.size(); i++) {
 
-                        if (simonSays.get(i) == 1) {
-                            greenButton.setPressed(true);
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    greenButton.setPressed(false);
-                                    handler.postDelayed(this, 500);
-                                }
-                            }, FLASH_DURATION);
-                            Log.d("number", String.valueOf(simonSays.get(i)));
-
-
-                        }
-
-                        else if (simonSays.get(i) == 2) {
-                            redButton.setPressed(true);
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    redButton.setPressed(false);
-                                }
-                            }, FLASH_DURATION);
-                            Log.d("number", String.valueOf(simonSays.get(i)));
-
-                        }
-
-                        else if (simonSays.get(i) == 3) {
-                            blueButton.setPressed(true);
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    blueButton.setPressed(false);
-                                }
-                            }, FLASH_DURATION);
-                            Log.d("number", String.valueOf(simonSays.get(i)));
-
-                        }
-
-                        else if (simonSays.get(i) == 4) {
-                            yellowButton.setPressed(true);
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    yellowButton.setPressed(false);
-                                }
-                            }, FLASH_DURATION);
-                            Log.d("number", String.valueOf(simonSays.get(i)));
-
-                        }
+            if (simonSays.get(i) == 1) {
+                greenButton.setPressed(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        greenButton.setPressed(false);
                     }
-                }
-        }, 1000);
+                }, FLASH_DURATION);
+
+
+                Log.d("number", String.valueOf(simonSays.get(i)));
+
+            } else if (simonSays.get(i) == 2) {
+                redButton.setPressed(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        redButton.setPressed(false);
+                    }
+                }, FLASH_DURATION);
+
+                Log.d("number", String.valueOf(simonSays.get(i)));
+
+            } else if (simonSays.get(i) == 3) {
+                blueButton.setPressed(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        blueButton.setPressed(false);
+                    }
+                }, FLASH_DURATION);
+
+                Log.d("number", String.valueOf(simonSays.get(i)));
+
+            } else if (simonSays.get(i) == 4) {
+                yellowButton.setPressed(true);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        yellowButton.setPressed(false);
+                    }
+                }, FLASH_DURATION);
+
+
+                Log.d("number", String.valueOf(simonSays.get(i)));
+
+            }
+        }
     }
 }

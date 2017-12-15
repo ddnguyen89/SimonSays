@@ -1,4 +1,4 @@
-package nguyen.clickit;
+package nguyen.simonsays;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

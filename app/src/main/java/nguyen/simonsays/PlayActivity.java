@@ -176,7 +176,7 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
     }
 
 
-    //function to match user action with simon
+    //function to match user action with simonsays
    /* public boolean checkMatch(int[] simon, List<Integer> user) {
         boolean matchStatement = false;
 

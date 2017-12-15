@@ -1,12 +1,16 @@
 package nguyen.simonsays;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -15,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Timer;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.Delayed;
 
 public class PlayActivity extends AppCompatActivity implements OnClickListener{
 
@@ -28,7 +34,9 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
 
     private final int FLASH_DURATION = 1200;
 
-    Timer time = new Timer();
+    private Handler setDelay = new Handler();
+    private Runnable startDelay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +59,8 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
         yellowButton.setOnClickListener(this);
 
         quitButton.setOnClickListener(this);
+
+
 
         playGame();
 
@@ -117,17 +127,21 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
     public void addRandomNumber() {
         final int min = 1;
         final int max = 4;
-        int randomNumber = new Random().nextInt((max - min) + 1) + min;
 
-        simonSays.add(randomNumber);
-        Log.d("randomNumber", String.valueOf(randomNumber));
+        for(int i = 0; i < 5; i++) {
+            int randomNumber = new Random().nextInt((max - min) + 1) + min;
+
+
+            simonSays.add(randomNumber);
+        }
+        Log.d("randomNumber", String.valueOf(simonSays));
     }
 
     public void playGame() {
 
         addRandomNumber();
 
-        simonFlash();
+        simonFlash(simonSays);
 
         Log.d("simon size", String.valueOf(simonSays.size()));
         Log.d("user size", String.valueOf(userSays.size()));
@@ -141,63 +155,93 @@ public class PlayActivity extends AppCompatActivity implements OnClickListener{
         } else {
             addRandomNumber();
 
-            simonFlash();
+            simonFlash(simonSays);
 
             Log.d("match", String.valueOf(checkMatch(simonSays, userSays)));
         }
     }
 
-    public void simonFlash() {
+    public int i = 0;
 
-        for(int i = 0; i < simonSays.size(); i++) {
+    public void simonFlash(final List<Integer> simon) {
+
+        for(int i = 0; i < simon.size(); i++) {
+
+            boolean pause = false;
+            while(!pause){
 
             if (simonSays.get(i) == 1) {
+
                 greenButton.setPressed(true);
-                new Handler().postDelayed(new Runnable() {
+                startDelay = new Runnable() {
                     @Override
                     public void run() {
                         greenButton.setPressed(false);
                     }
-                }, FLASH_DURATION);
+                };
+                setDelay.postDelayed(startDelay, FLASH_DURATION);
 
+                Log.d("number-green", String.valueOf(simonSays.get(i)));
+            }
 
-                Log.d("number", String.valueOf(simonSays.get(i)));
-
-            } else if (simonSays.get(i) == 2) {
+            else if (simonSays.get(i) == 2) {
                 redButton.setPressed(true);
-                new Handler().postDelayed(new Runnable() {
+
+                startDelay = new Runnable() {
                     @Override
                     public void run() {
                         redButton.setPressed(false);
                     }
-                }, FLASH_DURATION);
+                };
+                setDelay.postDelayed(startDelay, FLASH_DURATION);
 
-                Log.d("number", String.valueOf(simonSays.get(i)));
+                Log.d("number-red", String.valueOf(simonSays.get(i)));
+            }
 
-            } else if (simonSays.get(i) == 3) {
+            else if (simonSays.get(i) == 3) {
+
                 blueButton.setPressed(true);
-                new Handler().postDelayed(new Runnable() {
+
+                startDelay = new Runnable() {
                     @Override
                     public void run() {
                         blueButton.setPressed(false);
                     }
-                }, FLASH_DURATION);
+                };
 
-                Log.d("number", String.valueOf(simonSays.get(i)));
+                setDelay.postDelayed(startDelay, FLASH_DURATION);
 
-            } else if (simonSays.get(i) == 4) {
+                Log.d("number-blue", String.valueOf(simonSays.get(i)));
+            }
+
+            else if (simonSays.get(i) == 4) {
+
                 yellowButton.setPressed(true);
-                new Handler().postDelayed(new Runnable() {
+
+                startDelay = new Runnable() {
                     @Override
                     public void run() {
                         yellowButton.setPressed(false);
                     }
-                }, FLASH_DURATION);
+                };
 
+                setDelay.postDelayed(startDelay, FLASH_DURATION);
 
-                Log.d("number", String.valueOf(simonSays.get(i)));
-
+                Log.d("number-yellow", String.valueOf(simonSays.get(i)));
             }
-        }
+
+            if (pause == false){
+                startDelay = new Runnable() {
+                    @Override
+                    public void run() {
+                    }
+                };
+                setDelay.postDelayed(startDelay, 5000);
+                pause = true;
+            }
+
+
+        }}
     }
 }
+

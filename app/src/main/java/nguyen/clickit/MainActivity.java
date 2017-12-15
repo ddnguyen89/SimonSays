@@ -1,4 +1,4 @@
-package nguyen.simonsays;
+package nguyen.clickit;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

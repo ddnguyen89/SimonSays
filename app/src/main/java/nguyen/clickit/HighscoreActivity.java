@@ -1,6 +1,7 @@
-package nguyen.simonsays;
+package nguyen.clickit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,11 @@ public class HighscoreActivity extends AppCompatActivity implements OnClickListe
     //define widget variables
     private TextView yourScoreTV, highscoreTV;
     private ImageButton playAgainButton, quitButton, resetScoreButton;
+
+    private int userScore;
+    private int highScore;
+
+    SharedPreferences savedScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,14 @@ public class HighscoreActivity extends AppCompatActivity implements OnClickListe
         playAgainButton.setOnClickListener(this);
         quitButton.setOnClickListener(this);
         resetScoreButton.setOnClickListener(this);
+
+        savedScores = getSharedPreferences("savedScores", MODE_PRIVATE);
+
+        userScore = savedScores.getInt("userScore", 0);
+        highScore = savedScores.getInt("highScore", 0);
+
+        yourScoreTV.setText(""+userScore);
+        highscoreTV.setText(""+highScore);
     }
 
     @Override

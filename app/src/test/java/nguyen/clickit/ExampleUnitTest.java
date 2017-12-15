@@ -1,4 +1,4 @@
-package nguyen.simonsays;
+package nguyen.clickit;
 
 import org.junit.Test;
 

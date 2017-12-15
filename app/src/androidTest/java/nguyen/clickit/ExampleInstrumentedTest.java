@@ -1,4 +1,4 @@
-package nguyen.simonsays;
+package nguyen.clickit;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

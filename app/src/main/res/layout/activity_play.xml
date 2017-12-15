@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="nguyen.simonsays.PlayActivity"
+    tools:context="nguyen.clickit.PlayActivity"
     android:background="#00FFFF">
 
     <LinearLayout
@@ -14,12 +14,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:layout_marginRight="50dp">
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/scoreImage"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:src="@drawable/scoretv"
             style="@style/Image" />
@@ -29,9 +28,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/score_tv"
-            android:textSize="50sp"
+            android:textSize="40sp"
             style="@style/TextView"
-            android:layout_marginTop="3dp"/>
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"/>
+
+
+        <ImageView
+            android:id="@+id/timerImage"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:src="@drawable/timetv"
+            style="@style/Image"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/timeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_tv"
+            android:textSize="40sp"
+            style="@style/TextView"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
     <LinearLayout

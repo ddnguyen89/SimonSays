@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Simon Says</string>
+    <string name="app_name">Click It!</string>
     <string name="high_score_tv">0</string>
     <string name="score_tv">0</string>
+    <string name="time_tv">0.00</string>
 </resources>
